@@ -9,6 +9,7 @@ class View {
 
     private val presenter = Presenter()
     private val validation = Validation()
+    private val consoleUI = ConsoleUI()
 
     fun printMenu() {
         while (true) {
@@ -18,6 +19,7 @@ class View {
             2. Добавить новую запись
             3. Удалить запись
             4. Закрыть телефонную книгу
+            5. Отключить графический интерфейс и перейти в консоль
         """.trimIndent()
             println(menu)
             print("Сделайте выбор: ")
@@ -26,11 +28,12 @@ class View {
             when (userChoice) {
                 1.toString() -> {
                     println()
-                    presenter.print()
+                    presenter.printPhoneBook()
                 }
                 2.toString() -> addNewNote()
                 3.toString() -> removeNote()
                 4.toString() -> exitProcess(0)
+                5.toString() -> consoleUI()
                 else -> println("Что-то не то!")
             }
         }
@@ -68,7 +71,7 @@ class View {
     }
 
     private fun removeNote() {
-        presenter.print()
+        presenter.printPhoneBook()
         print("Укажите номер записи, которую нужно удалить: ")
         val userChoice = readln()
         try {
@@ -81,6 +84,15 @@ class View {
             }
         } catch (e: NumberFormatException) {
             println("Что-то вы не то ввели!")
+        }
+    }
+
+    private fun consoleUI() {
+        consoleUI.consoleUI()
+        while (true) {
+            print("Введите команду с параметрами: ")
+            val consoleString = readln()
+            presenter.consoleUI(consoleString)
         }
     }
 }
