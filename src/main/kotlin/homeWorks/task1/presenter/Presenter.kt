@@ -14,7 +14,11 @@ class Presenter {
         model.removeNote(id)
     }
 
-    fun print() {
-        model.print()
+    fun printPhoneBook() {
+        model.printPhoneBook()
+    }
+
+    fun consoleUI(consoleString: String) {
+        model.consoleUI(consoleString)
     }
 }
