@@ -37,6 +37,18 @@ class Model {
                     && validation.checkName(stringArray[1])) {
 
                     addNewNote(Note(stringArray[1], stringArray[2], stringArray[3]))
+                }  else {
+                    if (!validation.checkEmail(stringArray[3])) {
+                        println("Email введен неверно!")
+                    }
+
+                    if (!validation.checkPhoneNumber(stringArray[2])) {
+                        println("Номер телефона введен неверно!")
+                    }
+
+                    if (!validation.checkName(stringArray[1])) {
+                        println("Имя введено неверно!")
+                    }
                 }
             }
             "remove" -> {
