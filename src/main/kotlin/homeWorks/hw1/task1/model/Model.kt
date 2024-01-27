@@ -1,7 +1,7 @@
-package main.kotlin.homeWorks.task1.model
+package main.kotlin.homeWorks.hw1.task1.model
 
-import main.kotlin.homeWorks.task1.domain.Note
-import main.kotlin.homeWorks.task1.view.ConsoleUI
+import main.kotlin.homeWorks.hw1.task1.domain.Note
+import main.kotlin.homeWorks.hw1.task1.view.ConsoleUI
 import kotlin.system.exitProcess
 
 class Model {

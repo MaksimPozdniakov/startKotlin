@@ -1,4 +1,4 @@
-package main.kotlin.homeWorks.task1.view
+package main.kotlin.homeWorks.hw1.task1.view
 
 class ConsoleUI {
 
