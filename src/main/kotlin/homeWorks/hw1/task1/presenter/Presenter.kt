@@ -1,7 +1,7 @@
-package main.kotlin.homeWorks.task1.presenter
+package main.kotlin.homeWorks.hw1.task1.presenter
 
-import main.kotlin.homeWorks.task1.domain.Note
-import main.kotlin.homeWorks.task1.model.Model
+import main.kotlin.homeWorks.hw1.task1.domain.Note
+import main.kotlin.homeWorks.hw1.task1.model.Model
 
 class Presenter {
     private val model = Model()

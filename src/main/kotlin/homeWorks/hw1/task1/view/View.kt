@@ -1,8 +1,8 @@
-package main.kotlin.homeWorks.task1.view
+package main.kotlin.homeWorks.hw1.task1.view
 
-import main.kotlin.homeWorks.task1.domain.Note
-import main.kotlin.homeWorks.task1.model.Validation
-import main.kotlin.homeWorks.task1.presenter.Presenter
+import main.kotlin.homeWorks.hw1.task1.domain.Note
+import main.kotlin.homeWorks.hw1.task1.model.Validation
+import main.kotlin.homeWorks.hw1.task1.presenter.Presenter
 import kotlin.system.exitProcess
 
 class View {

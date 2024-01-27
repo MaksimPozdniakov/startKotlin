@@ -1,4 +1,4 @@
-package main.kotlin.homeWorks.task1.model
+package main.kotlin.homeWorks.hw2.task.model
 
 class Validation {
 

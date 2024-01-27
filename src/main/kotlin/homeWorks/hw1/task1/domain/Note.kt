@@ -1,4 +1,4 @@
-package main.kotlin.homeWorks.task1.domain
+package main.kotlin.homeWorks.hw1.task1.domain
 
 class Note(
     val name: String?,
