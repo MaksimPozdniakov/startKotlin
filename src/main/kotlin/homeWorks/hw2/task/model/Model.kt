@@ -1,17 +1,29 @@
 package main.kotlin.homeWorks.hw2.task.model
 
+import main.kotlin.homeWorks.hw2.task.domain.Person
+
 class Model {
     val validation = Validation()
 
-    private val commands: MutableList<SealedCommand> = mutableListOf()
+    private val list: MutableList<Person> = mutableListOf()
 
-    fun readCommand(): Command? {
+    fun startMethod() {
+        print("Введите команду (Для выходы введите команду exit): ")
         val consoleString = readlnOrNull()
-        val stringArray = consoleString?.split(" ")?.toTypedArray()
-        return when (stringArray?.get(0)) {
+        if (consoleString != null) {
+            val typeClass = readCommand(consoleString)
+            if (typeClass != null) {
+                classWork(typeClass, consoleString)
+            }
+        }
+    }
+
+    private fun readCommand(consoleString: String): Command? {
+        val stringArray = consoleString.split(" ").toTypedArray()
+        return when (stringArray[0]) {
             "add" -> return CommandAdd(validation)
-            "remove" -> return CommandRemove(validation)
             "print" -> return CommandPrint(validation)
+            "remove" -> return CommandRemove(validation)
             "exit" -> return CommandExit(validation)
             "help" -> return CommandHelp(validation)
             "show" -> return CommandShow(validation)
@@ -19,40 +31,14 @@ class Model {
         }
     }
 
-
-
-
-
-
-
-
-
-
-    private fun fillListCommands() {
-        commands.add(CommandRemove(validation))
-        commands.add(CommandAdd(validation))
-        commands.add(CommandPrint(validation))
-        commands.add(CommandExit(validation))
-        commands.add(CommandHelp(validation))
-        commands.add(CommandShow(validation))
-    }
-
-    private fun handleCommand(command: SealedCommand) {
-        when (command) {
-            is CommandRemove -> command.execute()
-            is CommandAdd -> command.execute()
-            is CommandPrint -> command.execute()
-            is CommandExit -> command.execute()
-            is CommandHelp -> command.execute()
-            is CommandShow -> command.execute()
+    private fun classWork(typeClass: Command, consoleString: String) {
+        when (typeClass) {
+            is CommandAdd -> list.add(typeClass.addNewNote(consoleString))
+            is CommandPrint -> typeClass.printList(list)
+            is CommandRemove -> typeClass.removeNote(list)
+            is CommandExit -> typeClass.exitMethod()
+            is CommandHelp -> typeClass.helpMethod()
+            is CommandShow -> typeClass.showLastPerson()
         }
     }
-
-    fun showAllCommands() {
-        fillListCommands()
-        for (i in commands) {
-            handleCommand(i)
-        }
-    }
-
 }
