@@ -11,7 +11,7 @@ class CommandAdd(validation: Validation) : SealedCommand(validation) {
         return (validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email))
     }
 
-    private var person: Person? = null
+    var person: Person? = null
 
     fun addNewNote(consoleString: String): Person {
         val stringArray = consoleString.split(" ").toTypedArray()

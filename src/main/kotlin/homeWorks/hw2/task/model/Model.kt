@@ -4,6 +4,7 @@ import main.kotlin.homeWorks.hw2.task.domain.Person
 
 class Model {
     val validation = Validation()
+    private val commandAdd = CommandAdd(validation)
 
     private val list: MutableList<Person> = mutableListOf()
 
@@ -38,7 +39,7 @@ class Model {
             is CommandRemove -> typeClass.removeNote(list)
             is CommandExit -> typeClass.exitMethod()
             is CommandHelp -> typeClass.helpMethod()
-            is CommandShow -> typeClass.showLastPerson()
+            is CommandShow -> typeClass.showLastPerson(commandAdd.person)
         }
     }
 }
