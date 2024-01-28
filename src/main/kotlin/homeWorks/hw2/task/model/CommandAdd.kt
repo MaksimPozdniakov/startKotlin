@@ -11,11 +11,11 @@ class CommandAdd(validation: Validation) : SealedCommand(validation) {
         return (validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email))
     }
 
-    var person: Person? = null
 
-    fun addNewNote(consoleString: String): Person {
+
+    fun addNewNote(consoleString: String): Person? {
         val stringArray = consoleString.split(" ").toTypedArray()
-        person = Person(stringArray[1], stringArray[2], stringArray[3])
-        return Person(stringArray[1], stringArray[2], stringArray[3])
+        return if (isValid(stringArray[2], stringArray[3])) Person(stringArray[1], stringArray[2], stringArray[3])
+        else null
     }
 }

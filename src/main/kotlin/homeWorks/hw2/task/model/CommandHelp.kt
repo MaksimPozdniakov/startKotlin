@@ -2,7 +2,8 @@ package main.kotlin.homeWorks.hw2.task.model
 
 class CommandHelp(validation: Validation) : SealedCommand(validation) {
     override fun execute() {
-        println("Command show")
+        //println("Command show")
+        helpMethod()
     }
 
     override fun isValid(numberPhone: String, email: String): Boolean {

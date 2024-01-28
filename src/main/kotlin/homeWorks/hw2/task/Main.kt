@@ -7,11 +7,4 @@ fun main() {
     }
 }
 
-fun logic() {
 
-
-
-    // Проверяем класс
-//    val className = command?.let { it::class.simpleName ?: "Unknown" } ?: "Unknown"
-//    println("Class name: $className")
-}
