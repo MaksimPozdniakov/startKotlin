@@ -11,7 +11,11 @@ class CommandShow(validation: Validation) : SealedCommand(validation) {
         return (validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email))
     }
 
-    fun showLastPerson(person: Person) {
-        println(person)
+    fun showLastPerson(person: Person?) {
+        if (person != null) {
+            println(person)
+        } else {
+            println("Not initialized")
+        }
     }
 }
