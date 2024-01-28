@@ -15,6 +15,16 @@ data class Person(
             )
 
     override fun toString(): String {
-        return "$name, $phone, $email"
+        return buildString {
+            append(name)
+
+            if (phone.isNotEmpty()) {
+                append(", Phone: $phone")
+            }
+            if (email.isNotEmpty()) {
+                append(", Email: $email")
+            }
+        }
     }
+
 }
