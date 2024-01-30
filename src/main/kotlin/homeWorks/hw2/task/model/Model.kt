@@ -55,9 +55,10 @@ class Model {
     private fun classWork(typeClass: Command, consoleString: String) {
         when (typeClass) {
             is CommandAdd -> {
-                typeClass.addNewNote(consoleString)?.let { list.add(it) }
+                //typeClass.addNewNote(consoleString)?.let { list.add(it) }
                 lastPerson = typeClass.addNewNote(consoleString)
                 if (lastPerson != null) {
+                    list.add(lastPerson!!)
                     println("Запись успешно добавлена!")
                 } else {
                     println("Введенные данные некорректны!")
