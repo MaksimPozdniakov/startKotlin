@@ -25,7 +25,7 @@ class Model {
         print("\tПо какому параметру будем искать?\n" +
                 "\t\t'name' по имени\n" +
                 "\t\t'phone' по номеру телефона\n" +
-                "\t\t'email' по email\n")
+                "\t\t'email' по email: ")
         val consoleString = readln()
         return consoleString
     }
