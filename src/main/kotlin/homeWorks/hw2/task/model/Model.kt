@@ -46,6 +46,8 @@ class Model {
             "help" -> return CommandHelp(validation)
             "show" -> return CommandShow(lastPerson, validation)
             "find" -> return CommandFind(list, validation)
+            "addPhone" -> return CommandAddPhone(list, validation)
+            "addEmail" -> return CommandAddEmail(list, validation)
             else -> null
         }
     }
@@ -68,6 +70,8 @@ class Model {
             is CommandHelp -> typeClass.execute()
             is CommandShow -> typeClass.execute()
             is CommandFind -> typeClass.findInformation(searchParameter(), searchString())
+            is CommandAddPhone -> typeClass.execute()
+            is CommandAddEmail -> typeClass.execute()
         }
     }
 }
