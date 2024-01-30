@@ -20,6 +20,22 @@ class Model {
         }
     }
 
+    // TODO переработать метод, убрать его из Model
+    private fun searchParameter(): String {
+        print("\tПо какому параметру будем искать?\n" +
+                "\t\t'name' по имени\n" +
+                "\t\t'phone' по номеру телефона\n" +
+                "\t\t'email' по email\n")
+        val consoleString = readln()
+        return consoleString
+    }
+
+    private fun searchString(): String {
+        print("Укажите имя, номер телефона или email, в соответствии с выбранным ранее параметром: ")
+        val consoleString = readln()
+        return consoleString
+    }
+
     private fun readCommand(consoleString: String): Command? {
         val stringArray = consoleString.split(" ").toTypedArray()
         return when (stringArray[0]) {
@@ -29,6 +45,7 @@ class Model {
             "exit" -> return CommandExit(validation)
             "help" -> return CommandHelp(validation)
             "show" -> return CommandShow(lastPerson, validation)
+            "find" -> return CommandFind(list, validation)
             else -> null
         }
     }
@@ -50,6 +67,7 @@ class Model {
             is CommandExit -> typeClass.execute()
             is CommandHelp -> typeClass.execute()
             is CommandShow -> typeClass.execute()
+            is CommandFind -> println(typeClass.findInformation(searchParameter(), searchString()))
         }
     }
 }

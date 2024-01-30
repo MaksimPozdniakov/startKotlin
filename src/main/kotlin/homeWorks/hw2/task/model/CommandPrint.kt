@@ -12,7 +12,7 @@ class CommandPrint(private val list: MutableList<Person>, validation: Validation
         return (validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email))
     }
 
-    fun printList() {
+    private fun printList() {
         list.forEachIndexed { index, person ->
             println("\t${index + 1}. $person")
         }
