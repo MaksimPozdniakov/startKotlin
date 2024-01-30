@@ -4,7 +4,6 @@ import main.kotlin.homeWorks.hw2.task.domain.Person
 
 class CommandPrint(private val list: MutableList<Person>, validation: Validation) : SealedCommand(validation) {
     override fun execute() {
-        //println("Command print")
         printList()
     }
 
