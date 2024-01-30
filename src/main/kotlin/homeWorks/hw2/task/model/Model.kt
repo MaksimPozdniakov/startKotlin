@@ -67,7 +67,7 @@ class Model {
             is CommandExit -> typeClass.execute()
             is CommandHelp -> typeClass.execute()
             is CommandShow -> typeClass.execute()
-            is CommandFind -> println(typeClass.findInformation(searchParameter(), searchString()))
+            is CommandFind -> typeClass.findInformation(searchParameter(), searchString())
         }
     }
 }

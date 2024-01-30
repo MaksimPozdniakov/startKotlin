@@ -28,59 +28,20 @@ class CommandAdd(validation: Validation) : SealedCommand(validation) {
 
     private fun addNewNoteOnlyAll(consoleString: String): Person? {
         val stringArray = consoleString.split(" ").toTypedArray()
-        val phones: MutableList<String?> = mutableListOf()
-        val emails: MutableList<String?> = mutableListOf()
-        phones.add(stringArray[3])
-        emails.add(stringArray[4])
+        val phones: MutableList<String?> = stringArray[3].split(",").toMutableList()
+        val emails: MutableList<String?> = stringArray[4].split(",").toMutableList()
         return Person(stringArray[2], phones, emails)
     }
 
     private fun addNewNoteOnlyPhone(consoleString: String): Person? {
         val stringArray = consoleString.split(" ").toTypedArray()
-        val phones: MutableList<String?> = mutableListOf()
-        phones.add(stringArray[3])
+        val phones: MutableList<String?> = stringArray[3].split(",").toMutableList()
         return Person(stringArray[2], phones, "phone")
     }
 
     private fun addNewNoteOnlyEmail(consoleString: String): Person? {
         val stringArray = consoleString.split(" ").toTypedArray()
-        val emails: MutableList<String?> = mutableListOf()
-        emails.add(stringArray[3])
+        val emails: MutableList<String?> = stringArray[3].split(",").toMutableList()
         return Person(stringArray[2], emails, "email")
     }
-
-
-
-
-
-
-
-    // Старая реализация
-//    fun addNewNote(consoleString: String): Person? {
-//        val stringArray = consoleString.split(" ").toTypedArray()
-//        return if (stringArray[1] == "phone" && validation.checkPhoneNumber(stringArray[3])) {
-//            addNewNoteOnlyPhone(consoleString)
-//        } else if (stringArray[1] == "email" && validation.checkEmail(stringArray[3])) {
-//            addNewNoteOnlyEmail(consoleString)
-//        } else if (stringArray[1] == "all" && validation.checkPhoneNumber(stringArray[3]) && validation.checkEmail(stringArray[4])) {
-//            addNewNoteOnlyAll(consoleString)
-//        } else {
-//            return null
-//        }
-//    }
-//
-//    private fun addNewNoteOnlyAll(consoleString: String): Person? {
-//        val stringArray = consoleString.split(" ").toTypedArray()
-//        return Person(stringArray[2], stringArray[3], stringArray[4])
-//    }
-//
-//    private fun addNewNoteOnlyPhone(consoleString: String): Person? {
-//        val stringArray = consoleString.split(" ").toTypedArray()
-//        return Person(stringArray[2], stringArray[3], true)
-//    }
-//
-//    private fun addNewNoteOnlyEmail(consoleString: String): Person? {
-//        val stringArray = consoleString.split(" ").toTypedArray()
-//        return Person(stringArray[2], stringArray[3], false)
-//    }
 }

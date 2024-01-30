@@ -13,49 +13,38 @@ class CommandFind(private val list: MutableList<Person>, validation: Validation)
 
     fun findInformation(searchParameter: String, searchString : String) : Person? {
         when (searchParameter) {
-            "name" -> {
-                findName(searchString)
-            }
-            "phone" -> {
-                findPhone(searchString)
-            }
-            "email" -> {
-                findEmail(searchString)
-            }
+            "name" -> findName(searchString)
+            "phone" -> findPhone(searchString)
+            "email" -> findEmail(searchString)
         }
         return null
     }
 
-    private fun findName(searchString : String) : Person? {
+    private fun findName(searchString : String) {
         for (person in list) {
-//            if (searchString == person.name) {
-//                return person
-//            }
-            return person
-        }
-        return null
-    }
-    private fun findPhone(searchString : String) : Person? {
-        for (person in list) {
-            val phones = person.phones
-            for (i in phones) {
-                if (i == searchString) {
-                    return person
-                }
+            if (searchString == person.name) {
+                println(person)
             }
         }
-        return null
     }
 
-    private fun findEmail(searchString : String) : Person? {
+    private fun findPhone(searchString : String) {
         for (person in list) {
-            val emails = person.phones
-            for (i in emails) {
+            for (i in person.phones) {
                 if (i == searchString) {
-                    return person
+                    println(person)
                 }
             }
         }
-        return null
+    }
+
+    private fun findEmail(searchString : String) {
+        for (person in list) {
+            for (i in person.emails) {
+                if (i == searchString) {
+                    println(person)
+                }
+            }
+        }
     }
 }
