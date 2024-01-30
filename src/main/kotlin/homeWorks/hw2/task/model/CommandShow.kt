@@ -2,9 +2,8 @@ package main.kotlin.homeWorks.hw2.task.model
 
 import main.kotlin.homeWorks.hw2.task.domain.Person
 
-class CommandShow(val lastPerson: Person?, validation: Validation) : SealedCommand(validation) {
+class CommandShow(private val lastPerson: Person?, validation: Validation) : SealedCommand(validation) {
     override fun execute() {
-        //println("Command show")
         showLastPerson()
     }
 
@@ -12,7 +11,7 @@ class CommandShow(val lastPerson: Person?, validation: Validation) : SealedComma
         return (validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email))
     }
 
-    fun showLastPerson() {
+    private fun showLastPerson() {
         if (lastPerson != null) {
             println("\tПоследнее добавленное значение: $lastPerson")
         } else {
