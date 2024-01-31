@@ -71,8 +71,18 @@ class Model {
             is CommandHelp -> typeClass.execute()
             is CommandShow -> typeClass.execute()
             is CommandFind -> typeClass.findInformation(searchParameter(), searchString())
-            is CommandAddPhone -> typeClass.execute()
-            is CommandAddEmail -> typeClass.execute()
+            is CommandAddPhone -> {
+                list.forEachIndexed { index, person ->
+                    println("\t${index + 1}. $person")
+                }
+                typeClass.execute()
+            }
+            is CommandAddEmail -> {
+                list.forEachIndexed { index, person ->
+                    println("\t${index + 1}. $person")
+                }
+                typeClass.execute()
+            }
         }
     }
 }

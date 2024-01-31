@@ -8,7 +8,8 @@ class CommandAddEmail(private val list: MutableList<Person>, validation: Validat
     }
 
     override fun isValid(numberPhone: String, email: String): Boolean {
-        TODO("Not yet implemented")
+        // TODO придумать как использовать это в проверке (сейчас проверка осуществляется напрямую)
+        return validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email)
     }
 
     private fun addEmail() {
@@ -16,6 +17,7 @@ class CommandAddEmail(private val list: MutableList<Person>, validation: Validat
         val num = readln().toInt()
         print("Добавьте новый Email: ")
         val newEmail = readln()
-        list[num - 1].emails.add(newEmail)
+        if (validation.checkEmail(newEmail)) list[num - 1].emails.add(newEmail)
+        else println("Введенные данные некорректны!")
     }
 }
