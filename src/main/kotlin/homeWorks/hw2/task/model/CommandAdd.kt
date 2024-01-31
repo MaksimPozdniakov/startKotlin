@@ -8,7 +8,7 @@ class CommandAdd(validation: Validation) : SealedCommand(validation) {
     }
 
     override fun isValid(numberPhone: String, email: String): Boolean {
-        // TODO придумать как использовать это в проверке
+        // TODO придумать как использовать это в проверке (сейчас проверка осуществляется напрямую)
         return validation.checkPhoneNumber(numberPhone) && validation.checkEmail(email)
     }
 
@@ -30,18 +30,42 @@ class CommandAdd(validation: Validation) : SealedCommand(validation) {
         val stringArray = consoleString.split(" ").toTypedArray()
         val phones: MutableList<String?> = stringArray[3].split(",").toMutableList()
         val emails: MutableList<String?> = stringArray[4].split(",").toMutableList()
-        return Person(stringArray[2], phones, emails)
+        return if (helpMethodValidationPhones(phones) && helpMethodValidationEmails(emails))
+            Person(stringArray[2], phones, emails)
+        else null
     }
 
     private fun addNewNoteOnlyPhone(consoleString: String): Person? {
         val stringArray = consoleString.split(" ").toTypedArray()
         val phones: MutableList<String?> = stringArray[3].split(",").toMutableList()
-        return Person(stringArray[2], phones, "phone")
+        return if (helpMethodValidationPhones(phones))
+            Person(stringArray[2], phones, "phone")
+        else null
     }
 
     private fun addNewNoteOnlyEmail(consoleString: String): Person? {
         val stringArray = consoleString.split(" ").toTypedArray()
         val emails: MutableList<String?> = stringArray[3].split(",").toMutableList()
-        return Person(stringArray[2], emails, "email")
+        return if (helpMethodValidationEmails(emails))
+            Person(stringArray[2], emails, "email")
+        else null
+    }
+
+    private fun helpMethodValidationPhones(phones: MutableList<String?>): Boolean {
+        for (phone in phones) {
+            if (phone != null && !validation.checkPhoneNumber(phone)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun helpMethodValidationEmails(emails: MutableList<String?>): Boolean {
+        for (email in emails) {
+            if (email != null && !validation.checkEmail(email)) {
+                return false
+            }
+        }
+        return true
     }
 }
