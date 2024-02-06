@@ -48,6 +48,7 @@ class Model {
             "find" -> return CommandFind(list, validation)
             "addPhone" -> return CommandAddPhone(list, validation)
             "addEmail" -> return CommandAddEmail(list, validation)
+            "export" -> return CommandExport(list, validation)
             else -> null
         }
     }
@@ -83,6 +84,7 @@ class Model {
                 }
                 typeClass.execute()
             }
+            is CommandExport -> typeClass.execute()
         }
     }
 }
