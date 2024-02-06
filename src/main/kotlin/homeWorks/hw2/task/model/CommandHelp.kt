@@ -23,6 +23,7 @@ class CommandHelp(validation: Validation) : SealedCommand(validation) {
                             "\tfind - осуществляет поиск по телефонной книге\n" +
                             "\taddPhone - осуществляет добавление номера телефона к имеющемуся контакту\n" +
                             "\taddEmail - осуществляет добавление номера Email к имеющемуся контакту\n" +
+                            "\texport - записывает данные в файл" +
                     "\texit - закрывает телефонную книгу и закрывает программу"
 
         println(rules)
